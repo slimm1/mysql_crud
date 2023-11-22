@@ -1,23 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
-package pkg4.mysqlcrud;
-
-import control.sqlConnect.DbManager;
+import control.controller.User_Frame_Controller;
 
 /**
- *
  * @author Martin Ramonda
  */
 public class Main {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        DbManager db = new DbManager();
-        db.connectDb();
+        User_Frame_Controller.getInstance().launchWindow();
     }
     
 }

@@ -11,10 +11,10 @@ USE app_data;
 CREATE OR REPLACE TABLE user_(
 	user_id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
 	user_name VARCHAR(20) NOT NULL,
-	birthDate DATE NOT NULL,
-	user_email VARCHAR(50) NOT NULL,
 	user_pass VARCHAR(50) NOT NULL,
-	upcoming_show INT UNSIGNED NOT NULL
+	user_email VARCHAR(50) NOT NULL,
+	birthDate DATE NOT NULL,
+	upcoming_show INT UNSIGNED
 );
 
 CREATE OR REPLACE TABLE show_(

@@ -18,21 +18,29 @@ import java.sql.DatabaseMetaData;
  * @author Martin Ramonda
  */
 public class DbManager {
-    public void connectDb(){
+    
+    private Connection conn;
+    
+    public DbManager(){
+        this.conn = connectDb();
+    }
+    
+    private Connection connectDb(){
         try {
-            Connection c = DriverManager.getConnection(App_Constants.connectString+"information_schema","root","slimm1");
-            DatabaseMetaData metaData = c.getMetaData();
-            System.out.println(metaData.getDriverName());
-            Statement stmt = c.createStatement();
+            Connection c = DriverManager.getConnection(App_Constants.connectString+App_Constants.dbName,App_Constants.dbUser,App_Constants.dbPass);
+            System.out.println("connected");
+            /*Statement stmt = c.createStatement();
             //Retrieving the data
             ResultSet rs = stmt.executeQuery("Show tables");
             System.out.println("Tables in the current database: ");
-            while(rs.next()) {
-            System.out.print(rs.getString(1));
-            System.out.println();
-      }
+            while (rs.next()) {
+                System.out.print(rs.getString(1));
+                System.out.println();
+            }*/
+            return c;
         } catch (SQLException ex) {
             Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
         }
     }
 }
