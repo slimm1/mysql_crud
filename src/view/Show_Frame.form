@@ -36,9 +36,9 @@
                   <Component id="genreComboBox" alignment="0" min="-2" pref="88" max="-2" attributes="0"/>
                   <Component id="genreLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="timeLabel" min="-2" max="-2" attributes="0"/>
-                  <Component id="timeField" min="-2" max="-2" attributes="0"/>
+                  <Component id="timeField" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="45" max="32767" attributes="0"/>
+              <EmptySpace pref="51" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="EditButton" alignment="0" max="32767" attributes="0"/>
                   <Component id="AddButton" alignment="0" max="32767" attributes="0"/>
@@ -83,13 +83,11 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="show_Datepicker" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="timeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="21" pref="21" max="-2" attributes="0"/>
-                                  <Component id="timeField" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="timeLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="timeField" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
@@ -124,9 +122,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="NameField">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="nameLabel">
       <Properties>
@@ -161,9 +156,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JFormattedTextField" name="timeField">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jFormattedTextField1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="timeLabel">
       <Properties>
@@ -180,7 +172,7 @@
         <Component class="javax.swing.JTable" name="show_table">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="4" rowCount="4">
+              <Table columnCount="4" rowCount="0">
                 <Column editable="false" title="show_id" type="java.lang.Object"/>
                 <Column editable="false" title="show_name" type="java.lang.Object"/>
                 <Column editable="false" title="show_datetime" type="java.lang.Object"/>

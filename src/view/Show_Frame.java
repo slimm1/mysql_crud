@@ -4,8 +4,13 @@
  */
 package view;
 
+import com.toedter.calendar.JDateChooser;
 import control.listeners.ShowFrameWindowListener;
 import java.awt.event.WindowListener;
+import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
@@ -23,6 +28,26 @@ public class Show_Frame extends javax.swing.JFrame {
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setResizable(false);
         this.addWindowListener((WindowListener)new ShowFrameWindowListener());
+    }
+
+    public JTextField getNameField() {
+        return NameField;
+    }
+
+    public JComboBox<String> getGenreComboBox() {
+        return genreComboBox;
+    }
+
+    public JDateChooser getShow_Datepicker() {
+        return show_Datepicker;
+    }
+
+    public JTable getShow_table() {
+        return show_table;
+    }
+
+    public JFormattedTextField getTimeField() {
+        return timeField;
     }
 
     /**
@@ -56,8 +81,6 @@ public class Show_Frame extends javax.swing.JFrame {
 
         DeleteButton.setText("DELETE");
 
-        NameField.setText("jTextField1");
-
         nameLabel.setText("show_name");
 
         genreLabel.setText("genre");
@@ -66,16 +89,11 @@ public class Show_Frame extends javax.swing.JFrame {
 
         dateLabel.setText("date");
 
-        timeField.setText("jFormattedTextField1");
-
         timeLabel.setText("time");
 
         show_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "show_id", "show_name", "show_datetime", "genre"
@@ -113,8 +131,8 @@ public class Show_Frame extends javax.swing.JFrame {
                     .addComponent(genreComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(genreLabel)
                     .addComponent(timeLabel)
-                    .addComponent(timeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                    .addComponent(timeField, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(EditButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(AddButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -149,11 +167,10 @@ public class Show_Frame extends javax.swing.JFrame {
                                 .addComponent(dateLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(show_Datepicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(timeLabel)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(21, 21, 21)
-                                    .addComponent(timeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(27, 27, 27))
+                            .addComponent(timeField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(AddButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)

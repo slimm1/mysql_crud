@@ -9,6 +9,7 @@ import control.listeners.AddUserButtonListener;
 import control.listeners.DeleteUserButtonListener;
 import control.listeners.EditUserButtonListener;
 import control.listeners.ShowsButtonActionListener;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 /**
@@ -202,6 +203,10 @@ public class User_Frame extends javax.swing.JFrame {
 
     public JTextField getEmailField() {
         return emailField;
+    }
+
+    public JTable getMainUserTable() {
+        return MainUserTable;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

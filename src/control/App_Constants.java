@@ -13,6 +13,7 @@ public class App_Constants {
     public static String dbUser= "root";
     public static String dbPass = "slimm1";
     public static String dbName = "app_data";
+    public static String newDbConnection = "jdbc:mariadb://localhost:3306/";
     
     public static void setCurrentDb(String currentDb){
         dbName = currentDb;

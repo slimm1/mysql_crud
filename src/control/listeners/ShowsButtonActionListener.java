@@ -14,7 +14,7 @@ public class ShowsButtonActionListener implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        Show_Frame_Controller.getInstance().loadWindow();
+        Show_Frame_Controller.getInstance().launchWindow();
         User_Frame_Controller.getInstance().getFrame().setEnabled(false);
     }
     
