@@ -4,7 +4,10 @@
  */
 package control.listeners;
 
+import control.Utilities;
 import control.controller.Show_Frame_Controller;
+import control.controller.User_Frame_Controller;
+import control.sqlConnect.ShowCrud;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
@@ -28,19 +31,20 @@ public class AddShowButtonListener implements ActionListener{
         String genre = (String)frame.getGenreComboBox().getSelectedItem();
         String hour = frame.getTimeField().getText();
         Date showDate = frame.getShow_Datepicker().getDate();
-        Show newShow = new Show(showname);
-        System.out.println(showDate.toString()+hour);
-        if(validateAddShow(newShow, showname, hour, showDate)){
-            
+        //Show newShow = new Show(showname,Utilities.getLocalDateTimeFrom(showDate,hour));
+        if(validateAddShow(showname, hour, showDate)){
+            ShowCrud.insertData(User_Frame_Controller.getInstance().getDb().connectDb());
+            Show_Frame_Controller.getInstance().loadTable();
         }
     }
     
-    private boolean validateAddShow(Show newShow, String showname, String hour, Date showDate){
+    private boolean validateAddShow(String showname, String hour, Date showDate){
         if(checkEmptyFields(showname, hour, showDate)){
             JOptionPane.showMessageDialog(null, "Some field is empty in the form", "Empty field error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
-        else if(Show_Frame_Controller.getInstance().getListModel().getShowList().contains(newShow)){
+        Show newShow = new Show(showname,Utilities.getLocalDateTimeFrom(showDate,hour));
+        if(Show_Frame_Controller.getInstance().getListModel().getShowList().contains(newShow)){
             JOptionPane.showMessageDialog(null, "Same show is programmed at this DateTime", "add show error", JOptionPane.ERROR_MESSAGE);
             return false;
         }

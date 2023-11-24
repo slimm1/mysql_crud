@@ -18,8 +18,9 @@ public class Show {
         this.genre = genre;
     }
     
-    public Show(String showName){
+    public Show(String showName,LocalDateTime showTime){
         this.showName = showName;
+        this.showTime = showTime;
     }
 
     public int getId() {

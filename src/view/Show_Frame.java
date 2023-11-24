@@ -99,7 +99,7 @@ public class Show_Frame extends javax.swing.JFrame {
 
         dateLabel.setText("date");
 
-        timeField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        timeField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("HH:mm"))));
 
         timeLabel.setText("time");
 

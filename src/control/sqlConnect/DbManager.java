@@ -60,8 +60,8 @@ public class DbManager {
             st.execute("ALTER TABLE user_ ADD CONSTRAINT fk_user_show FOREIGN KEY(upcoming_show) "
                     + "REFERENCES show_(show_id);");
             st.execute("INSERT INTO show_(show_name, show_datetime, genre) "
-                    + "VALUES('El rey león', '2024-04-19 13:08:22', 'Musical'), "
-                    + "('El amanecer de los tuertos', '2024-04-19 13:08:22', 'Comedia');");
+                    + "VALUES('El rey león', '2024-04-19 13:08:00', 'Musical'), "
+                    + "('El amanecer de los tuertos', '2024-04-19 13:08:00', 'Comedia');");
             st.execute("insert into user_(user_name,user_pass,user_email, birthDate, upcoming_show) "
                     + "values('chinasky','jeje123','chinaskyboss@yahoo.es','1991-05-26',null), "
                     + "('slimm1','1234','tini.ramonda@gmail.com','1996-01-18',2); ");
