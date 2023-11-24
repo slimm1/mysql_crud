@@ -5,6 +5,8 @@
 package view;
 
 import com.toedter.calendar.JDateChooser;
+import control.listeners.AddShowButtonListener;
+import control.listeners.ClearButtonListener;
 import control.listeners.ShowFrameWindowListener;
 import control.listeners.ShowTableRowSelectionListener;
 import java.awt.event.WindowListener;
@@ -14,7 +16,6 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 /**
- *
  * @author Martin Ramonda
  */
 public class Show_Frame extends javax.swing.JFrame {
@@ -28,12 +29,16 @@ public class Show_Frame extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setResizable(false);
-        setListeners();
+        this.setTitle("Shows");
+        this.show_Datepicker.getDateEditor().setEnabled(false);
+        this.setListeners();
     }
     
     public void setListeners(){
         this.addWindowListener((WindowListener)new ShowFrameWindowListener()); 
         this.show_table.getSelectionModel().addListSelectionListener(new ShowTableRowSelectionListener());
+        this.ClearButton.addActionListener(new ClearButtonListener());
+        this.AddButton.addActionListener(new AddShowButtonListener());
     }
 
     public JTextField getNameField() {
@@ -92,9 +97,9 @@ public class Show_Frame extends javax.swing.JFrame {
 
         genreLabel.setText("genre");
 
-        genreComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         dateLabel.setText("date");
+
+        timeField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
 
         timeLabel.setText("time");
 
@@ -196,6 +201,8 @@ public class Show_Frame extends javax.swing.JFrame {
                 .addComponent(ClearButton, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        ClearButton.getAccessibleContext().setAccessibleDescription("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -1,11 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package control;
 
+import java.util.regex.Pattern;
+
 /**
- *
  * @author Martin Ramonda
  */
 public class App_Constants {
@@ -14,6 +11,9 @@ public class App_Constants {
     public static String dbPass = "slimm1";
     public static String dbName = "app_data";
     public static String newDbConnection = "jdbc:mariadb://localhost:3306/";
+    public static String[] showGenres = {"<null>","Musical","Comedia","Drama","Monólogo","Tragedia"};
+    public static final Pattern VALID_EMAIL_ADDRESS_REGEX = 
+    Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
     
     public static void setCurrentDb(String currentDb){
         dbName = currentDb;

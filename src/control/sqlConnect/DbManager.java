@@ -8,11 +8,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.sql.DatabaseMetaData;
 import java.util.ArrayList;
 import model.Show;
 import model.User;
-
 /**
  * @author Martin Ramonda
  */
@@ -27,7 +25,7 @@ public class DbManager {
         }
     }
     
-    private Connection connectDb(){
+    public Connection connectDb(){
         try {
             Connection c = DriverManager.getConnection(App_Constants.connectString+App_Constants.dbName,App_Constants.dbUser,App_Constants.dbPass);
             return c;
@@ -71,6 +69,7 @@ public class DbManager {
             Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
     public void closeConnection(){
         try {
             this.conn.close();
@@ -96,7 +95,7 @@ public class DbManager {
         }
     }
     
-        public ArrayList<Show> loadShowList(){
+    public ArrayList<Show> loadShowList(){
         ArrayList<Show> dbList = new ArrayList();
         try {
             Statement st = conn.createStatement();

@@ -4,6 +4,8 @@ import control.sqlConnect.DbManager;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.table.DefaultTableModel;
+import model.Show;
+import model.ShowList;
 import model.User;
 import model.UserList;
 import view.User_Frame;
@@ -16,6 +18,7 @@ public class User_Frame_Controller {
     private User_Frame window;
     private DbManager db;
     private UserList userList;
+    private ShowList showList;
     
     private static User_Frame_Controller _instance = new User_Frame_Controller();
     
@@ -35,13 +38,18 @@ public class User_Frame_Controller {
         return window;
     }
     
-    public UserList getListModel(){
+    public UserList getUserListModel(){
         return userList;
+    }
+    
+    public ShowList getShowListModel(){
+        return showList;
     }
     
     public void launchWindow(){
         this.window = new User_Frame();
         loadTable();
+        loadShowsComboBox();
     }
     
     public void loadTable(){
@@ -50,6 +58,14 @@ public class User_Frame_Controller {
         this.userList = new UserList(db.loadUserList());
         for(User u: userList.getUserList()){
             model.addRow(new String[]{String.valueOf(u.getId()),u.getUsername(),u.getPassword(),u.getEmail(),getFormatedDate(u.getBirthDate())});
+        }
+    }
+    
+    public void loadShowsComboBox(){
+        this.showList = new ShowList(db.loadShowList());
+        window.getShow_combo().addItem("<null>");
+        for(Show s:showList.getShowList()){
+            window.getShow_combo().addItem(s.getShowName());
         }
     }
     

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package control.listeners;
 
 import control.controller.Show_Frame_Controller;
@@ -15,20 +11,18 @@ import model.Show;
 import view.Show_Frame;
 
 /**
- *
- * @author marti
+ * @author Martin Ramonda
  */
 public class ShowTableRowSelectionListener implements ListSelectionListener{
 
     @Override
     public void valueChanged(ListSelectionEvent e) {
-        Show_Frame window = Show_Frame_Controller.getInstance().getWindow();
+        Show_Frame window = Show_Frame_Controller.getInstance().getFrame();
         if(window.getShow_table().getSelectedRow()>-1){
             int selectedId = Integer.parseInt((String)window.getShow_table().getValueAt(window.getShow_table().getSelectedRow(), 0));
             Show selectedShow = Show_Frame_Controller.getInstance().getListModel().getShowById(selectedId);
             window.getNameField().setText(selectedShow.getShowName());
-            window.getGenreComboBox().removeAllItems();
-            window.getGenreComboBox().addItem(selectedShow.getGenre());
+            window.getGenreComboBox().setSelectedItem(selectedShow.getGenre());
             window.getShow_Datepicker().setDate(getDateFromLocalDT(selectedShow.getShowTime()));
             window.getTimeField().setText(getTimeFromLDT(selectedShow.getShowTime()));
         }

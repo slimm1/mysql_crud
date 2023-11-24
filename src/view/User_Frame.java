@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package view;
 
 import com.toedter.calendar.JDateChooser;
@@ -11,11 +7,11 @@ import control.listeners.DeleteUserButtonListener;
 import control.listeners.EditUserButtonListener;
 import control.listeners.ShowsButtonActionListener;
 import control.listeners.UserTableRowSelectionListener;
+import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
 /**
- *
  * @author Martin Ramonda
  */
 public class User_Frame extends javax.swing.JFrame {
@@ -25,10 +21,12 @@ public class User_Frame extends javax.swing.JFrame {
      */
     public User_Frame() {
         initComponents();
-        this.setListeners();
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        this.setTitle("Users");
+        this.DatePicker.getDateEditor().setEnabled(false);
+        this.setListeners();
     }
     
     public void setListeners(){
@@ -110,8 +108,6 @@ public class User_Frame extends javax.swing.JFrame {
         EditButton.setText("EDIT");
 
         DeleteButton.setText("DELETE");
-
-        show_combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "item 1" }));
 
         showsLabel.setText("available shows:");
 
@@ -230,6 +226,10 @@ public class User_Frame extends javax.swing.JFrame {
 
     public JTable getMainUserTable() {
         return MainUserTable;
+    }
+
+    public JComboBox<String> getShow_combo() {
+        return show_combo;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

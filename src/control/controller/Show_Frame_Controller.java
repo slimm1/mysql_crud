@@ -1,5 +1,6 @@
 package control.controller;
 
+import control.App_Constants;
 import control.sqlConnect.DbManager;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -9,7 +10,6 @@ import model.ShowList;
 import view.Show_Frame;
 
 /**
- *
  * @author Martin Ramonda
  */
 public class Show_Frame_Controller {
@@ -22,7 +22,7 @@ public class Show_Frame_Controller {
         this.db = db;
     }
     
-    public Show_Frame getWindow(){
+    public Show_Frame getFrame(){
         return window;
     }
     
@@ -36,6 +36,7 @@ public class Show_Frame_Controller {
     
     public void launchWindow(){
         window = new Show_Frame();
+        loadGenreComboBox();
         loadTable();
     }
     
@@ -51,5 +52,11 @@ public class Show_Frame_Controller {
     private String getFormatedDateTime(LocalDateTime date){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm");
         return date.format(formatter);
+    }
+    
+    public void loadGenreComboBox(){
+        for(String genre: App_Constants.showGenres){
+            window.getGenreComboBox().addItem(genre);
+        }
     }
 }
