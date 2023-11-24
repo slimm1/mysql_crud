@@ -6,9 +6,11 @@ package view;
 
 import com.toedter.calendar.JDateChooser;
 import control.listeners.AddUserButtonListener;
+import control.listeners.ClearButtonListener;
 import control.listeners.DeleteUserButtonListener;
 import control.listeners.EditUserButtonListener;
 import control.listeners.ShowsButtonActionListener;
+import control.listeners.TableRowSelectionListener;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
@@ -34,6 +36,8 @@ public class User_Frame extends javax.swing.JFrame {
         this.DeleteButton.addActionListener(new DeleteUserButtonListener());
         this.EditButton.addActionListener(new EditUserButtonListener());
         this.showsButton.addActionListener(new ShowsButtonActionListener());
+        this.MainUserTable.getSelectionModel().addListSelectionListener(new TableRowSelectionListener());
+        this.ClearButton.addActionListener(new ClearButtonListener());
     }
 
     /**
@@ -62,6 +66,8 @@ public class User_Frame extends javax.swing.JFrame {
         show_combo = new javax.swing.JComboBox<>();
         showsLabel = new javax.swing.JLabel();
         showsButton = new javax.swing.JButton();
+        ClearButton = new javax.swing.JButton();
+        signLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName("MainFrame"); // NOI18N
@@ -111,14 +117,15 @@ public class User_Frame extends javax.swing.JFrame {
 
         showsButton.setText("SHOWS");
 
+        ClearButton.setText("CLEAR");
+
+        signLabel.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
+        signLabel.setText("powered by slimm1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 652, Short.MAX_VALUE)
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -143,6 +150,18 @@ public class User_Frame extends javax.swing.JFrame {
                     .addComponent(AddButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(DeleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(signLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ClearButton)
+                        .addGap(27, 27, 27))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 652, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,8 +201,12 @@ public class User_Frame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(DeleteButton)))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ClearButton)
+                    .addComponent(signLabel))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
@@ -211,6 +234,7 @@ public class User_Frame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddButton;
+    private javax.swing.JButton ClearButton;
     private com.toedter.calendar.JDateChooser DatePicker;
     private javax.swing.JButton DeleteButton;
     private javax.swing.JButton EditButton;
@@ -227,5 +251,6 @@ public class User_Frame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> show_combo;
     private javax.swing.JButton showsButton;
     private javax.swing.JLabel showsLabel;
+    private javax.swing.JLabel signLabel;
     // End of variables declaration//GEN-END:variables
 }

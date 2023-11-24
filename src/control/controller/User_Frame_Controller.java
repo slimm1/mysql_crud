@@ -33,6 +33,10 @@ public class User_Frame_Controller {
         return window;
     }
     
+    public UserList getListModel(){
+        return userList;
+    }
+    
     public void launchWindow(){
         this.window = new User_Frame();
         loadTable();

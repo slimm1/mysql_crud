@@ -18,4 +18,13 @@ public class UserList {
     public ArrayList<User> getUserList() {
         return userList;
     }
+    
+    public User getUserById(int id){
+        for(User u: userList){
+            if(u.getId() == id){
+                return u;
+            }
+        }
+        return null;
+    }
 }
