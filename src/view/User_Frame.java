@@ -10,7 +10,7 @@ import control.listeners.ClearButtonListener;
 import control.listeners.DeleteUserButtonListener;
 import control.listeners.EditUserButtonListener;
 import control.listeners.ShowsButtonActionListener;
-import control.listeners.TableRowSelectionListener;
+import control.listeners.UserTableRowSelectionListener;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
@@ -36,7 +36,7 @@ public class User_Frame extends javax.swing.JFrame {
         this.DeleteButton.addActionListener(new DeleteUserButtonListener());
         this.EditButton.addActionListener(new EditUserButtonListener());
         this.showsButton.addActionListener(new ShowsButtonActionListener());
-        this.MainUserTable.getSelectionModel().addListSelectionListener(new TableRowSelectionListener());
+        this.MainUserTable.getSelectionModel().addListSelectionListener(new UserTableRowSelectionListener());
         this.ClearButton.addActionListener(new ClearButtonListener());
     }
 

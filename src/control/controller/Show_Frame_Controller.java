@@ -1,6 +1,8 @@
 package control.controller;
 
 import control.sqlConnect.DbManager;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import javax.swing.table.DefaultTableModel;
 import model.Show;
 import model.ShowList;
@@ -20,6 +22,14 @@ public class Show_Frame_Controller {
         this.db = db;
     }
     
+    public Show_Frame getWindow(){
+        return window;
+    }
+    
+    public ShowList getListModel(){
+        return showList;
+    }
+    
     public static Show_Frame_Controller getInstance(){
         return _instance;
     }
@@ -34,7 +44,12 @@ public class Show_Frame_Controller {
         model.setRowCount(0);
         this.showList = new ShowList(db.loadShowList());
         for(Show s: showList.getShowList()){
-            model.addRow(new String[]{String.valueOf(s.getId()),s.getShowName(),s.getShowTime().toString(),s.getGenre()});
+            model.addRow(new String[]{String.valueOf(s.getId()),s.getShowName(),getFormatedDateTime(s.getShowTime()),s.getGenre()});
         }
+    }
+    
+    private String getFormatedDateTime(LocalDateTime date){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm");
+        return date.format(formatter);
     }
 }

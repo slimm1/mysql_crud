@@ -9,7 +9,7 @@ import view.User_Frame;
 /**
  * @author Martin Ramonda
  */
-public class TableRowSelectionListener implements ListSelectionListener{
+public class UserTableRowSelectionListener implements ListSelectionListener{
 
     @Override
     public void valueChanged(ListSelectionEvent e) {

@@ -1,6 +1,8 @@
 package control.controller;
 
 import control.sqlConnect.DbManager;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.table.DefaultTableModel;
 import model.User;
 import model.UserList;
@@ -47,7 +49,12 @@ public class User_Frame_Controller {
         model.setRowCount(0);
         this.userList = new UserList(db.loadUserList());
         for(User u: userList.getUserList()){
-            model.addRow(new String[]{String.valueOf(u.getId()),u.getUsername(),u.getPassword(),u.getEmail(),u.getBirthDate().toString()});
+            model.addRow(new String[]{String.valueOf(u.getId()),u.getUsername(),u.getPassword(),u.getEmail(),getFormatedDate(u.getBirthDate())});
         }
+    }
+    
+    private String getFormatedDate(Date d){
+        SimpleDateFormat formater = new SimpleDateFormat("dd MMM yyyy");
+        return formater.format(d);
     }
 }

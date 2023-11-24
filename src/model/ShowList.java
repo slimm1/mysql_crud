@@ -18,4 +18,13 @@ public class ShowList {
     public ArrayList<Show> getShowList() {
         return showList;
     }
+    
+    public Show getShowById(int id){
+        for(Show s: showList){
+            if(s.getId() == id){
+                return s;
+            }
+        }
+        return null;
+    }
 }

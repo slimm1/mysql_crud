@@ -6,6 +6,7 @@ package view;
 
 import com.toedter.calendar.JDateChooser;
 import control.listeners.ShowFrameWindowListener;
+import control.listeners.ShowTableRowSelectionListener;
 import java.awt.event.WindowListener;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
@@ -27,7 +28,12 @@ public class Show_Frame extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setResizable(false);
-        this.addWindowListener((WindowListener)new ShowFrameWindowListener());
+        setListeners();
+    }
+    
+    public void setListeners(){
+        this.addWindowListener((WindowListener)new ShowFrameWindowListener()); 
+        this.show_table.getSelectionModel().addListSelectionListener(new ShowTableRowSelectionListener());
     }
 
     public JTextField getNameField() {
@@ -72,6 +78,7 @@ public class Show_Frame extends javax.swing.JFrame {
         timeLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         show_table = new javax.swing.JTable();
+        ClearButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -115,6 +122,8 @@ public class Show_Frame extends javax.swing.JFrame {
             show_table.getColumnModel().getColumn(3).setResizable(false);
         }
 
+        ClearButton.setText("CLEAR");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -132,15 +141,19 @@ public class Show_Frame extends javax.swing.JFrame {
                     .addComponent(genreLabel)
                     .addComponent(timeLabel)
                     .addComponent(timeField, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(EditButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(AddButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(DeleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19))
+                .addGap(18, 18, 18))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ClearButton)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -178,8 +191,10 @@ public class Show_Frame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(DeleteButton)))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ClearButton, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -188,6 +203,7 @@ public class Show_Frame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddButton;
+    private javax.swing.JButton ClearButton;
     private javax.swing.JButton DeleteButton;
     private javax.swing.JButton EditButton;
     private javax.swing.JTextField NameField;
