@@ -17,5 +17,4 @@ public class ShowsButtonActionListener implements ActionListener{
         Show_Frame_Controller.getInstance().launchWindow();
         User_Frame_Controller.getInstance().getFrame().setEnabled(false);
     }
-    
 }

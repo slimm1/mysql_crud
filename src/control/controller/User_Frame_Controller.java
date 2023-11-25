@@ -1,8 +1,7 @@
 package control.controller;
 
+import control.DateTimeUtilities;
 import control.sqlConnect.DbManager;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import javax.swing.table.DefaultTableModel;
 import model.Show;
 import model.ShowList;
@@ -57,20 +56,16 @@ public class User_Frame_Controller {
         model.setRowCount(0);
         this.userList = new UserList(db.loadUserList());
         for(User u: userList.getUserList()){
-            model.addRow(new String[]{String.valueOf(u.getId()),u.getUsername(),u.getPassword(),u.getEmail(),getFormatedDate(u.getBirthDate())});
+            model.addRow(new String[]{String.valueOf(u.getId()),u.getUsername(),u.getPassword(),u.getEmail(),DateTimeUtilities.getFormatedDate(u.getBirthDate())});
         }
     }
     
     public void loadShowsComboBox(){
         this.showList = new ShowList(db.loadShowList());
+        window.getShow_combo().removeAllItems();
         window.getShow_combo().addItem("<null>");
         for(Show s:showList.getShowList()){
             window.getShow_combo().addItem(s.getShowName());
         }
-    }
-    
-    private String getFormatedDate(Date d){
-        SimpleDateFormat formater = new SimpleDateFormat("dd MMM yyyy");
-        return formater.format(d);
     }
 }

@@ -1,31 +1,41 @@
 package control.sqlConnect;
 
-import control.Utilities;
-import control.controller.Show_Frame_Controller;
+import control.DateTimeUtilities;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import view.Show_Frame;
+import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  * @author Martin Ramonda
  */
 public class ShowCrud {
-    public static void insertData(Connection conn){
+    
+    public static void insertData(Connection conn, String showName,Date showDate, String showTime, String genre){
         try {
-            Show_Frame frame = Show_Frame_Controller.getInstance().getFrame();
             String query = "INSERT INTO show_(show_name,Show_datetime,genre) VALUES(?,?,?);";
             PreparedStatement st = conn.prepareStatement(query);
-            st.setString(1, frame.getNameField().getText());
-            st.setDate(2, java.sql.Date.valueOf(Utilities.getLocalDateTimeFrom(frame.getShow_Datepicker().getDate(),frame.getTimeField().getText()).toLocalDate()));
-            if(frame.getGenreComboBox().getSelectedIndex()==0){st.setNull(3, java.sql.Types.VARCHAR);}
-            else{st.setString(3, (String)frame.getGenreComboBox().getSelectedItem());}
+            st.setString(1, showName);
+            st.setTimestamp(2, java.sql.Timestamp.valueOf(DateTimeUtilities.getLocalDateTimeFrom(showDate,showTime)));
+            if(genre.equalsIgnoreCase("<null>")){st.setNull(3, java.sql.Types.VARCHAR);}
+            else{st.setString(3, genre);}
             st.execute();
             conn.close();
         } catch (SQLException ex) {
-            Logger.getLogger(ShowCrud.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "SQLEXCEPTION", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public static void deleteData(Connection conn, int show_id){
+        try {
+            String query = "DELETE FROM show_ WHERE show_id = ?";
+            PreparedStatement st = conn.prepareStatement(query);
+            st.setInt(1, show_id);
+            st.execute();
+            conn.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "SQLEXCEPTION", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

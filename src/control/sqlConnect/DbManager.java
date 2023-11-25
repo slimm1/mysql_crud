@@ -6,9 +6,8 @@ import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import model.Show;
 import model.User;
 /**
@@ -42,7 +41,7 @@ public class DbManager {
             this.conn = connectDb();
             runCreationScript();
         } catch (SQLException ex) {
-            Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "SQLEXCEPTION", JOptionPane.ERROR_MESSAGE);
         }
     }
     
@@ -66,7 +65,7 @@ public class DbManager {
                     + "values('chinasky','jeje123','chinaskyboss@yahoo.es','1991-05-26',null), "
                     + "('slimm1','1234','tini.ramonda@gmail.com','1996-01-18',2); ");
         } catch (SQLException ex) {
-            Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "SQLEXCEPTION", JOptionPane.ERROR_MESSAGE);
         }
     }
     
@@ -74,7 +73,7 @@ public class DbManager {
         try {
             this.conn.close();
         } catch (SQLException ex) {
-            Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "SQLEXCEPTION", JOptionPane.ERROR_MESSAGE);
         }
     }
     
@@ -90,7 +89,7 @@ public class DbManager {
             }
             return dbList;
         } catch (SQLException ex) {
-            Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "SQLEXCEPTION", JOptionPane.ERROR_MESSAGE);
             return null;
         }
     }
@@ -106,7 +105,7 @@ public class DbManager {
             }
             return dbList;
         } catch (SQLException ex) {
-            Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "SQLEXCEPTION", JOptionPane.ERROR_MESSAGE);
             return null;
         }
     }

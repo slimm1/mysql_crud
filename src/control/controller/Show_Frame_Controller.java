@@ -1,9 +1,8 @@
 package control.controller;
 
 import control.App_Constants;
+import control.DateTimeUtilities;
 import control.sqlConnect.DbManager;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import javax.swing.table.DefaultTableModel;
 import model.Show;
 import model.ShowList;
@@ -45,13 +44,8 @@ public class Show_Frame_Controller {
         model.setRowCount(0);
         this.showList = new ShowList(db.loadShowList());
         for(Show s: showList.getShowList()){
-            model.addRow(new String[]{String.valueOf(s.getId()),s.getShowName(),getFormatedDateTime(s.getShowTime()),s.getGenre()});
+            model.addRow(new String[]{String.valueOf(s.getId()),s.getShowName(),DateTimeUtilities.getFormatedDateTime(s.getShowTime()),s.getGenre()});
         }
-    }
-    
-    private String getFormatedDateTime(LocalDateTime date){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm");
-        return date.format(formatter);
     }
     
     public void loadGenreComboBox(){

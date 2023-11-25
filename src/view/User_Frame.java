@@ -1,9 +1,9 @@
 package view;
 
 import com.toedter.calendar.JDateChooser;
-import control.listeners.AddUserButtonListener;
+import control.listeners.AddButtonListener;
 import control.listeners.ClearButtonListener;
-import control.listeners.DeleteUserButtonListener;
+import control.listeners.DeleteButtonListener;
 import control.listeners.EditUserButtonListener;
 import control.listeners.ShowsButtonActionListener;
 import control.listeners.UserTableRowSelectionListener;
@@ -30,8 +30,8 @@ public class User_Frame extends javax.swing.JFrame {
     }
     
     public void setListeners(){
-        this.AddButton.addActionListener(new AddUserButtonListener());
-        this.DeleteButton.addActionListener(new DeleteUserButtonListener());
+        this.AddButton.addActionListener(new AddButtonListener());
+        this.DeleteButton.addActionListener(new DeleteButtonListener());
         this.EditButton.addActionListener(new EditUserButtonListener());
         this.showsButton.addActionListener(new ShowsButtonActionListener());
         this.MainUserTable.getSelectionModel().addListSelectionListener(new UserTableRowSelectionListener());

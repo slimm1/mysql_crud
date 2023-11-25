@@ -1,32 +1,41 @@
 package control.sqlConnect;
 
-import control.controller.User_Frame_Controller;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import view.User_Frame;
+import java.util.Date;
+import javax.swing.JOptionPane;
 /**
  * @author Martin Ramonda
  */
 public class UserCrud {
     
-    public static void insertData(Connection conn){
+    public static void insertData(Connection conn,String username, String password, String email, Date birthDate,int showId){
         try {
-            User_Frame frame = User_Frame_Controller.getInstance().getFrame();
             String query = "INSERT INTO user_(user_name,user_pass,user_email,birthDate,upcoming_show) VALUES (?,?,?,?,?);";
             PreparedStatement st = conn.prepareStatement(query);
-            st.setString(1, frame.getNameField().getText());
-            st.setString(2, frame.getPassField().getText());
-            st.setString(3, frame.getEmailField().getText());
-            st.setDate(4, new java.sql.Date(frame.getDatePicker().getDate().getTime()));
-            if(frame.getShow_combo().getSelectedIndex()==0){st.setNull(5, java.sql.Types.INTEGER);}
-            else{st.setInt(5, frame.getShow_combo().getSelectedIndex());}
+            st.setString(1, username);
+            st.setString(2, password);
+            st.setString(3, email);
+            st.setDate(4, new java.sql.Date(birthDate.getTime()));
+            if(showId==0){st.setNull(5, java.sql.Types.INTEGER);}
+            else{st.setInt(5, showId);}
             st.execute();
             conn.close();
         } catch (SQLException ex) {
-            Logger.getLogger(UserCrud.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "SQLEXCEPTION", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+        public static void deleteData(Connection conn, int user_id){
+        try {
+            String query = "DELETE FROM user_ WHERE user_id = ?";
+            PreparedStatement st = conn.prepareStatement(query);
+            st.setInt(1, user_id);
+            st.execute();
+            conn.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "SQLEXCEPTION", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

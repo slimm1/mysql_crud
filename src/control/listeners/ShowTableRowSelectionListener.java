@@ -1,10 +1,7 @@
 package control.listeners;
 
+import control.DateTimeUtilities;
 import control.controller.Show_Frame_Controller;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import model.Show;
@@ -23,17 +20,8 @@ public class ShowTableRowSelectionListener implements ListSelectionListener{
             Show selectedShow = Show_Frame_Controller.getInstance().getListModel().getShowById(selectedId);
             window.getNameField().setText(selectedShow.getShowName());
             window.getGenreComboBox().setSelectedItem(selectedShow.getGenre());
-            window.getShow_Datepicker().setDate(getDateFromLocalDT(selectedShow.getShowTime()));
-            window.getTimeField().setText(getTimeFromLDT(selectedShow.getShowTime()));
+            window.getShow_Datepicker().setDate(DateTimeUtilities.getDateFromLocalDT(selectedShow.getShowTime()));
+            window.getTimeField().setText(DateTimeUtilities.extractTimeFromLDT(selectedShow.getShowTime()));
         }
-    }
-    
-    public Date getDateFromLocalDT(LocalDateTime ldt){
-        return Date.from(ldt.atZone(ZoneId.systemDefault()).toInstant());
-    }
-    
-    public String getTimeFromLDT(LocalDateTime ldt){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-        return ldt.format(formatter);
     }
 }
