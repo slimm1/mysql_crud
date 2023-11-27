@@ -4,7 +4,7 @@ import com.toedter.calendar.JDateChooser;
 import control.listeners.AddButtonListener;
 import control.listeners.ClearButtonListener;
 import control.listeners.DeleteButtonListener;
-import control.listeners.EditUserButtonListener;
+import control.listeners.EditButtonListener;
 import control.listeners.ShowsButtonActionListener;
 import control.listeners.UserTableRowSelectionListener;
 import javax.swing.JComboBox;
@@ -32,7 +32,7 @@ public class User_Frame extends javax.swing.JFrame {
     public void setListeners(){
         this.AddButton.addActionListener(new AddButtonListener());
         this.DeleteButton.addActionListener(new DeleteButtonListener());
-        this.EditButton.addActionListener(new EditUserButtonListener());
+        this.EditButton.addActionListener(new EditButtonListener());
         this.showsButton.addActionListener(new ShowsButtonActionListener());
         this.MainUserTable.getSelectionModel().addListSelectionListener(new UserTableRowSelectionListener());
         this.ClearButton.addActionListener(new ClearButtonListener());

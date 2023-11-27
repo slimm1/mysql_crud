@@ -3,6 +3,7 @@ package control.listeners;
 import control.controller.User_Frame_Controller;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import model.Show;
 import model.User;
 import view.User_Frame;
 
@@ -21,7 +22,22 @@ public class UserTableRowSelectionListener implements ListSelectionListener{
             window.getEmailField().setText(selectedUser.getEmail());
             window.getPassField().setText(selectedUser.getPassword());
             window.getDatePicker().setDate(selectedUser.getBirthDate());
-            window.getShow_combo().setSelectedIndex(selectedUser.getShow_id());
+            window.getShow_combo().setSelectedIndex(getComboIndexByShowId(selectedUser.getShow_id(), window));
         }
+    }
+    
+    private int getComboIndexByShowId(int id, User_Frame window){
+        Show s = User_Frame_Controller.getInstance().getShowListModel().getShowById(id);
+        if(s == null){
+                return 0;
+            }
+        else{
+            for(int i = 0; i < window.getShow_combo().getItemCount(); i++){
+                if(s.getShowName().equalsIgnoreCase(window.getShow_combo().getItemAt(i))){
+                    return i;
+                }
+            }
+        }
+        return -1;
     }
 }

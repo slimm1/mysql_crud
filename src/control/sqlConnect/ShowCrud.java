@@ -38,4 +38,8 @@ public class ShowCrud {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "SQLEXCEPTION", JOptionPane.ERROR_MESSAGE);
         }
     }
+    
+    public static void updateDate(){
+    
+    }
 }
