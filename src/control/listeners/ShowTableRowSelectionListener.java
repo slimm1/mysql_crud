@@ -19,7 +19,8 @@ public class ShowTableRowSelectionListener implements ListSelectionListener{
             int selectedId = Integer.parseInt((String)window.getShow_table().getValueAt(window.getShow_table().getSelectedRow(), 0));
             Show selectedShow = Show_Frame_Controller.getInstance().getListModel().getShowById(selectedId);
             window.getNameField().setText(selectedShow.getShowName());
-            window.getGenreComboBox().setSelectedItem(selectedShow.getGenre());
+            if(selectedShow.getGenre()==null){window.getGenreComboBox().setSelectedIndex(0);}
+            else{window.getGenreComboBox().setSelectedItem(selectedShow.getGenre());}
             window.getShow_Datepicker().setDate(DateTimeUtilities.getDateFromLocalDT(selectedShow.getShowTime()));
             window.getTimeField().setText(DateTimeUtilities.extractTimeFromLDT(selectedShow.getShowTime()));
         }

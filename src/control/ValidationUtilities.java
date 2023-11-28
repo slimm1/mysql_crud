@@ -54,11 +54,47 @@ public class ValidationUtilities {
     }
     
     public static boolean validateDeleteUser(int selectedRow){
-        if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null, "You must select a user to delete", "NO ITEM SELECTED", JOptionPane.ERROR_MESSAGE);            
+        if(!selectedItem(selectedRow)){
             return false;
         }
         else if(JOptionPane.showConfirmDialog(null, "ARE YOU SURE YOU WANT TO DELETE THIS USER?","WAIT", JOptionPane.YES_NO_OPTION) == JOptionPane.NO_OPTION){
+            return false;
+        }
+        return true;
+    }
+    
+    public static boolean validateUpdateShow(Show s, String showname, Date showdate,String hour, String genre){
+        if(checkEmptyFields(showname, genre, Show_Frame_Controller.getInstance().getFrame().getShow_Datepicker().getDate())){
+            JOptionPane.showMessageDialog(null, "Some field is empty in the form", "Empty field error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        Show newShow = new Show(showname,DateTimeUtilities.getLocalDateTimeFrom(showdate,hour));
+        if(Show_Frame_Controller.getInstance().getListModel().getShowList().contains(newShow)){
+            JOptionPane.showMessageDialog(null, "Same show is programmed at this DateTime", "add show error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+    
+    public static boolean validateUpdateUser(User u, String username, String password, String email, Date d, int showId){
+        if(checkEmptyFields(username, password, email, d)){
+            JOptionPane.showMessageDialog(null, "Some field is empty in the form", "Empty field error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        else if(!emailChecker(email)){
+            JOptionPane.showMessageDialog(null, "invalid e-mail format", "e-mail error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        else if(equalFields(username, password, email, d, u)){
+            JOptionPane.showMessageDialog(null, "program did not detect any changes to upload", "NO CHANGES MADE", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }        
+        return true;
+    }
+    
+    public static boolean selectedItem(int selectedRow){
+        if(selectedRow == -1){
+            JOptionPane.showMessageDialog(null, "You must select an item to update", "NO ITEM SELECTED", JOptionPane.ERROR_MESSAGE);            
             return false;
         }
         return true;
@@ -70,9 +106,9 @@ public class ValidationUtilities {
         emailBool = email.equalsIgnoreCase(selectedUser.getEmail());
         passwordBool = password.equalsIgnoreCase(selectedUser.getPassword());
         dateBool = birthDate.equals(selectedUser.getBirthDate());
-        if(nameBool && emailBool && passwordBool && dateBool){return false;}
-        return true;
-    }
+        if(nameBool && emailBool && passwordBool && dateBool){return true;}
+        return false;
+    }    
     
     private static boolean checkEmptyFields(String username, String password, String email, Date birth){
         if(email.isEmpty()){

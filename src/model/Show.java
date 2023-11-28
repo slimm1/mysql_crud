@@ -44,7 +44,7 @@ public class Show {
         if(obj == null){return false;}
         if(!(obj instanceof Show)){return false;}
         Show s = (Show) obj;
-        if(s.getShowName().equalsIgnoreCase(this.showName) && s.getShowTime().equals(this.showTime) ){return true;}
+        if(s.getShowName().equalsIgnoreCase(this.showName) && s.getShowTime().equals(this.showTime)){return true;}
         return false;
     }
         

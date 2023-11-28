@@ -27,7 +27,7 @@ public class DeleteButtonListener implements ActionListener{
     private void deleteUser() {
         int row = User_Frame_Controller.getInstance().getFrame().getMainUserTable().getSelectedRow();
         if(ValidationUtilities.validateDeleteUser(row)){
-            int userId = Integer.parseInt((String)User_Frame_Controller.getInstance().getFrame().getMainUserTable().getModel().getValueAt(row, 0));
+            int userId = Integer.parseInt((String)User_Frame_Controller.getInstance().getFrame().getMainUserTable().getValueAt(row, 0));
             UserCrud.deleteData(User_Frame_Controller.getInstance().getDb().connectDb(), userId);
             User_Frame_Controller.getInstance().loadTable();
         }
@@ -36,7 +36,7 @@ public class DeleteButtonListener implements ActionListener{
     private void deleteShow() {
         int row = Show_Frame_Controller.getInstance().getFrame().getShow_table().getSelectedRow();
         if(ValidationUtilities.validateDeleteShow(row)){
-            int showId = Integer.parseInt((String)Show_Frame_Controller.getInstance().getFrame().getShow_table().getModel().getValueAt(row, 0));
+            int showId = Integer.parseInt((String)Show_Frame_Controller.getInstance().getFrame().getShow_table().getValueAt(row, 0));
             ShowCrud.deleteData(User_Frame_Controller.getInstance().getDb().connectDb(), showId);
             Show_Frame_Controller.getInstance().loadTable();
             User_Frame_Controller.getInstance().loadShowsComboBox();

@@ -68,4 +68,13 @@ public class User_Frame_Controller {
             window.getShow_combo().addItem(s.getShowName());
         }
     }
+    
+    public int getShowIdByShowName(String showName){
+        for(Show s : showList.getShowList()){
+            if(s.getShowName().equalsIgnoreCase(showName)){
+                return s.getId();
+            }
+        }
+        return 0;
+    }
 }

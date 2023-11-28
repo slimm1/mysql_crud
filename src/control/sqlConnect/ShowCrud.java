@@ -4,6 +4,7 @@ import control.DateTimeUtilities;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
@@ -39,7 +40,19 @@ public class ShowCrud {
         }
     }
     
-    public static void updateDate(){
-    
+    public static void updateData(Connection conn, String showname, LocalDateTime ldt, String genre, int showId){
+        try {
+            String query = "UPDATE show_ SET show_name = ?, show_datetime = ?, genre = ? WHERE show_id = ?;";
+            PreparedStatement st = conn.prepareStatement(query);
+            st.setString(1, showname);
+            st.setTimestamp(2, java.sql.Timestamp.valueOf(ldt));
+            if(genre==null || genre.equalsIgnoreCase("<null>")){st.setNull(3, java.sql.Types.VARCHAR);}
+            else{st.setString(3, genre);}
+            st.setInt(4, showId);
+            st.execute();
+            conn.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "SQLEXCEPTION", JOptionPane.ERROR_MESSAGE);
+        }
     }
 }

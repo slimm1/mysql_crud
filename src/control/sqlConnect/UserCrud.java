@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.User;
 /**
@@ -42,17 +40,17 @@ public class UserCrud {
         }
     }
     
-    public static void updateDate(Connection conn, User u){
+    public static void updateData(Connection conn, String username, String password, String email, Date birthDate, int showId, int userId){
         try {
             String query = "UPDATE user_ SET user_name = ?, user_pass = ?, user_email = ?, birthDate = ?, upcoming_show = ? WHERE user_id = ?;";
             PreparedStatement st = conn.prepareStatement(query);
-            st.setString(1, u.getUsername());
-            st.setString(2, u.getPassword());
-            st.setString(3, u.getEmail());
-            st.setDate(4, new java.sql.Date(u.getBirthDate().getTime()));
-            if(u.getShow_id()==0){st.setNull(5, java.sql.Types.INTEGER);}
-            else{st.setInt(5, u.getShow_id());}
-            st.setInt(6, u.getId());
+            st.setString(1, username);
+            st.setString(2,password);
+            st.setString(3, email);
+            st.setDate(4, new java.sql.Date(birthDate.getTime()));
+            if(showId==0){st.setNull(5, java.sql.Types.INTEGER);}
+            else{st.setInt(5, showId);}
+            st.setInt(6, userId);
             st.execute();
             conn.close();
         } catch (SQLException ex) {

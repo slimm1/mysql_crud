@@ -8,6 +8,7 @@ import com.toedter.calendar.JDateChooser;
 import control.listeners.AddButtonListener;
 import control.listeners.ClearButtonListener;
 import control.listeners.DeleteButtonListener;
+import control.listeners.EditButtonListener;
 import control.listeners.ShowFrameWindowListener;
 import control.listeners.ShowTableRowSelectionListener;
 import java.awt.event.WindowListener;
@@ -41,6 +42,7 @@ public class Show_Frame extends javax.swing.JFrame {
         this.ClearButton.addActionListener(new ClearButtonListener());
         this.AddButton.addActionListener(new AddButtonListener());
         this.DeleteButton.addActionListener(new DeleteButtonListener());
+        this.EditButton.addActionListener(new EditButtonListener());
     }
 
     public JTextField getNameField() {
