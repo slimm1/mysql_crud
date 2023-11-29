@@ -57,7 +57,7 @@ public class User {
         if(obj == null){return false;}
         if(!(obj instanceof User)){return false;}
         User u = (User)obj;
-        if(u.getUsername().equalsIgnoreCase(this.username) || u.getId() == this.id || u.getEmail().equalsIgnoreCase(this.email)){return true;}
+        if(u.getUsername().equalsIgnoreCase(this.username) || u.getEmail().equalsIgnoreCase(this.email)){return true;}
         return false;
     }
     

@@ -29,11 +29,11 @@ public class UserTableRowSelectionListener implements ListSelectionListener{
     private int getComboIndexByShowId(int id, User_Frame window){
         Show s = User_Frame_Controller.getInstance().getShowListModel().getShowById(id);
         if(s == null){
-                return 0;
-            }
+            return 0;
+        }
         else{
             for(int i = 0; i < window.getShow_combo().getItemCount(); i++){
-                if(s.getShowName().equalsIgnoreCase(window.getShow_combo().getItemAt(i))){
+                if((s.getId()+":"+s.getShowName()).equalsIgnoreCase(window.getShow_combo().getItemAt(i))){
                     return i;
                 }
             }

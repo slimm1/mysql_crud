@@ -60,9 +60,9 @@ public class EditButtonListener implements ActionListener{
             String password = frame.getPassField().getText();
             String email = frame.getEmailField().getText();
             Date birthDate = frame.getDatePicker().getDate();
-            int showId = User_Frame_Controller.getInstance().getShowIdByShowName((String)frame.getShow_combo().getSelectedItem());
+            int showId = Integer.parseInt(((String)frame.getShow_combo().getSelectedItem()).split(":")[0].equals("<null>")?"0":((String)frame.getShow_combo().getSelectedItem()).split(":")[0]);
             if(ValidationUtilities.validateUpdateUser(selectedUser, username, password, email, birthDate, showId)){
-                UserCrud.updateData(User_Frame_Controller.getInstance().getDb().connectDb(), username, password, email, birthDate, showId, showId);
+                UserCrud.updateData(User_Frame_Controller.getInstance().getDb().connectDb(), username, password, email, birthDate, showId, selectedId);
                 User_Frame_Controller.getInstance().loadTable();
             }
         }

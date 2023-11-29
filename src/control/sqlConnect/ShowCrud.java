@@ -36,7 +36,8 @@ public class ShowCrud {
             st.execute();
             conn.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "SQLEXCEPTION", JOptionPane.ERROR_MESSAGE);
+            if(ex.getErrorCode()==1451){JOptionPane.showMessageDialog(null, "PARA BORRAR ESTE REGISTRO DEBES ELIMINAR TODAS LAS REFERENCIAS AL MISMO", "SQLEXCEPTION", JOptionPane.ERROR_MESSAGE);}
+            else{JOptionPane.showMessageDialog(null, ex.getMessage(), "SQLEXCEPTION", JOptionPane.ERROR_MESSAGE);}
         }
     }
     
