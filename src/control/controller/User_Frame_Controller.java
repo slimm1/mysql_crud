@@ -11,6 +11,8 @@ import view.User_Frame;
 
 /**
  * @author Martin Ramonda
+ * Controlador para User_Frame instanciado con patrón singleton para acceso global a la misma instancia.
+ * Inicia un nuevo DbManager en el constructor.
  */
 public class User_Frame_Controller {
     
@@ -45,12 +47,14 @@ public class User_Frame_Controller {
         return showList;
     }
     
+    //lanza la ventana, carga la tabla y el comboBox de shows
     public void launchWindow(){
         this.window = new User_Frame();
         loadTable();
         loadShowsComboBox();
     }
     
+    //Carga la tabla a través de un DefaultTableModel y una lista cargada desde la base de datos.
     public void loadTable(){
         DefaultTableModel model = (DefaultTableModel) window.getMainUserTable().getModel();
         model.setRowCount(0);
@@ -60,6 +64,7 @@ public class User_Frame_Controller {
         }
     }
     
+    //Carga el comboBox a través de la lista de shows, cargada en memoria a través de la base de datos.
     public void loadShowsComboBox(){
         this.showList = new ShowList(db.loadShowList());
         window.getShow_combo().removeAllItems();

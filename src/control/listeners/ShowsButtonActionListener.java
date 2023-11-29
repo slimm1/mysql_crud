@@ -7,8 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- *
  * @author Martin Ramonda
+ * Listener para la acción de botón SHOWS en User_Frame. Al pulsar, desactiva User_Frame y abre ventana Show_Frame
  */
 public class ShowsButtonActionListener implements ActionListener{
 

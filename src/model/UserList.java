@@ -26,24 +26,5 @@ public class UserList {
             }
         }
         return null;
-    }
-    
-    public User getUserByName(String name){
-        for(User u: userList){
-            if(u.getUsername().equalsIgnoreCase(name)){
-                return u;
-            }
-        }
-        return null;
-    }
-    
-    public User getUserByEmail(String email){
-        for(User u: userList){
-            if(u.getEmail().equalsIgnoreCase(email)){
-                return u;
-            }
-        }
-        return null;
-    }
-    
+    } 
 }

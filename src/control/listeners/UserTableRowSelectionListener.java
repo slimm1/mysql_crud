@@ -9,6 +9,8 @@ import view.User_Frame;
 
 /**
  * @author Martin Ramonda
+ * Listener para accion de cambiar de fila en la tabla de User_Frame.
+ * Sl cambiar de fila, setea todos lo campos con los valores del User seleccionado.
  */
 public class UserTableRowSelectionListener implements ListSelectionListener{
 
@@ -26,6 +28,7 @@ public class UserTableRowSelectionListener implements ListSelectionListener{
         }
     }
     
+    // auxiliar para asignar correctamente el show correspondiente a cada usuario.
     private int getComboIndexByShowId(int id, User_Frame window){
         Show s = User_Frame_Controller.getInstance().getShowListModel().getShowById(id);
         if(s == null){

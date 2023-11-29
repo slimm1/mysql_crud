@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 
 /**
  * @author Martin Ramonda
+ * Listener para la acción de eliminar. Detecta frame y actúa según origen de llamada.
  */
 public class DeleteButtonListener implements ActionListener{
 
@@ -24,6 +25,7 @@ public class DeleteButtonListener implements ActionListener{
         else{deleteShow();}
     }
 
+    // Detecta la fila de la tabla seleccionada. Si pasa la validación elimina de bd a través de UserCrud y actualiza la tabla.
     private void deleteUser() {
         int row = User_Frame_Controller.getInstance().getFrame().getMainUserTable().getSelectedRow();
         if(ValidationUtilities.validateDeleteUser(row)){
@@ -33,6 +35,7 @@ public class DeleteButtonListener implements ActionListener{
         }
     }
 
+    // Similar al anterior para show. Al eliminar de la bd actualiza la tabla shows y el comboBox de user
     private void deleteShow() {
         int row = Show_Frame_Controller.getInstance().getFrame().getShow_table().getSelectedRow();
         if(ValidationUtilities.validateDeleteShow(row)){

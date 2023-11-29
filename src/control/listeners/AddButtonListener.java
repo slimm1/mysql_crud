@@ -16,6 +16,7 @@ import view.User_Frame;
 
 /**
  * @author Martin Ramonda
+ * Listener para la acción de añadir. Detecta desde que frame se ha lanzado y actúa en consecuencia.
  */
 public class AddButtonListener implements ActionListener{
 
@@ -28,6 +29,8 @@ public class AddButtonListener implements ActionListener{
         else{addShow();}
     }
 
+    // accede a la instancia de Show_Frame y extrae los datos de los fields. Si pasa la validación, se insertan los datos en la bd
+    // a través de la clase ShowCrud y se actualizan la tabla y el comboBox de show.
     private void addShow() {
         Show_Frame frame = Show_Frame_Controller.getInstance().getFrame();
         String showname = frame.getNameField().getText();
@@ -40,6 +43,8 @@ public class AddButtonListener implements ActionListener{
             User_Frame_Controller.getInstance().loadShowsComboBox();
         }
     }
+    
+    // similar al anterior. Si pasa la validación se insertan los datos y actualiza la tabla de usuarios.
     private void addUser() {
         User_Frame window = User_Frame_Controller.getInstance().getFrame();
         String username = window.getNameField().getText();

@@ -11,6 +11,8 @@ import view.User_Frame;
 
 /**
  * @author Martin Ramonda
+ * Listener para la acción de botón clear.
+ * Detecta desde que frame se ha llamado a la acción y actúa en consecuencia.
  */
 public class ClearButtonListener implements ActionListener{
 
@@ -23,6 +25,7 @@ public class ClearButtonListener implements ActionListener{
         else{ clearShows(); }
     }
     
+    //Accede a la instancia de User_Frame y setea los fields en blanco o null. Limpia la selección de la tabla
     private void clearUsers(){
         User_Frame window = User_Frame_Controller.getInstance().getFrame();
         window.getMainUserTable().clearSelection();
@@ -33,6 +36,7 @@ public class ClearButtonListener implements ActionListener{
         window.getShow_combo().setSelectedIndex(0);
     }
     
+    // Igual que el anterior pero para Show_Frame
     private void clearShows(){
         Show_Frame window = Show_Frame_Controller.getInstance().getFrame();
         window.getShow_table().clearSelection();

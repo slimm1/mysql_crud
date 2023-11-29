@@ -9,6 +9,8 @@ import view.Show_Frame;
 
 /**
  * @author Martin Ramonda
+ * Listener para la acción de seleccionar una fila en la tabla de Show_Frame.
+ * Al cambiar de fila, setea todos los fields con los datos del objeto seleccionado.
  */
 public class ShowTableRowSelectionListener implements ListSelectionListener{
 

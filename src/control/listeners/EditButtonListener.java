@@ -19,6 +19,8 @@ import view.User_Frame;
 
 /**
  * @author Martin Ramonda
+ * Listener para la acción de editar. Como los demás detecta y actúa según origen.
+ * Es mejorable...
  */
 public class EditButtonListener implements ActionListener{
 
@@ -31,6 +33,8 @@ public class EditButtonListener implements ActionListener{
         else{editShow();}
     }
 
+    // Accede a la instancia de Show_Frame, si hay una fila seleccionada procede a extraer los valores de los fields.
+    // Si pasa la segunda validación actualiza la bd a través de ShowCrud y actualiza tabla y comboBox
     private void editShow() {
         Show_Frame frame = Show_Frame_Controller.getInstance().getFrame();
         int row = frame.getShow_table().getSelectedRow();
@@ -50,6 +54,7 @@ public class EditButtonListener implements ActionListener{
         }
     }
 
+    // Similar al anterior pero para user. Haciendo malabares para pasar los datos... una chapucilla pero funcional.
     private void editUser(){
         User_Frame frame = User_Frame_Controller.getInstance().getFrame();
         int row = frame.getMainUserTable().getSelectedRow();
@@ -66,8 +71,5 @@ public class EditButtonListener implements ActionListener{
                 User_Frame_Controller.getInstance().loadTable();
             }
         }
-    }
-    
-    
-    
+    } 
 }

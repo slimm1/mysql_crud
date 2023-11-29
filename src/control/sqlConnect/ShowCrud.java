@@ -10,9 +10,11 @@ import javax.swing.JOptionPane;
 
 /**
  * @author Martin Ramonda
+ * Clase intermediaria para acciones de añadir, eliminar o editar shows.
  */
 public class ShowCrud {
     
+    // Inserta los datos proporcionados por parámetros en la base de datos a través de la conexion de la clase DbManager.
     public static void insertData(Connection conn, String showName,Date showDate, String showTime, String genre){
         try {
             String query = "INSERT INTO show_(show_name,Show_datetime,genre) VALUES(?,?,?);";
@@ -28,6 +30,7 @@ public class ShowCrud {
         }
     }
     
+    //elimina en la base de datos el show que coincida con el proporcionado en los parametros.
     public static void deleteData(Connection conn, int show_id){
         try {
             String query = "DELETE FROM show_ WHERE show_id = ?";
@@ -41,6 +44,7 @@ public class ShowCrud {
         }
     }
     
+    //actualiza los datos en la bd a través de las variables proporcionadas por parametros.
     public static void updateData(Connection conn, String showname, LocalDateTime ldt, String genre, int showId){
         try {
             String query = "UPDATE show_ SET show_name = ?, show_datetime = ?, genre = ? WHERE show_id = ?;";

@@ -12,6 +12,8 @@ import model.Show;
 import model.User;
 /**
  * @author Martin Ramonda
+ * Clase conectora a la base de datos.
+ * si la conexion a la base de datos falla, crea una nueva.
  */
 public class DbManager {
     
@@ -24,6 +26,7 @@ public class DbManager {
         }
     }
     
+    // Devuelve un objeto Connection. SQLException fuerza un null.
     public Connection connectDb(){
         try {
             Connection c = DriverManager.getConnection(App_Constants.connectString+App_Constants.dbName,App_Constants.dbUser,App_Constants.dbPass);
@@ -33,6 +36,7 @@ public class DbManager {
         }
     }
 
+    // Crea una nueva base de datos conectándose al puerto por defecto
     private void createDb() {
         try {
             this.conn = DriverManager.getConnection(App_Constants.newDbConnection,App_Constants.dbUser,App_Constants.dbPass);
@@ -45,6 +49,7 @@ public class DbManager {
         }
     }
     
+    // Conjunto de statements que crean las tablas de la bd e insertan algunos datos de prueba.
     private void runCreationScript(){
         try {
             Statement st = conn.createStatement();
@@ -69,6 +74,7 @@ public class DbManager {
         }
     }
     
+    // CIerra la conexion del objeto Connection de esta clase.
     public void closeConnection(){
         try {
             this.conn.close();
@@ -77,6 +83,7 @@ public class DbManager {
         }
     }
     
+    // Carga una lista de usuarios a través de una consulta a la bd. Cualquier excepcion SQL fuerza un null.
     public ArrayList<User> loadUserList(){
         ArrayList<User> dbList = new ArrayList();
         try {
@@ -94,6 +101,7 @@ public class DbManager {
         }
     }
     
+    // Carga una lista de shows desde la bd a través de una consulta. Cualquier error de SQL fuerza un null.
     public ArrayList<Show> loadShowList(){
         ArrayList<Show> dbList = new ArrayList();
         try {

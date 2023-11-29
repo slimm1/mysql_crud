@@ -10,6 +10,8 @@ import view.Show_Frame;
 
 /**
  * @author Martin Ramonda
+ * Controlador para el frame de shows instanciado con el patrón singleton para acceso global a la misma instancia.
+ * Inicia la variable DbManager con la misma instancia que utiliza el controlador de User_Frame.
  */
 public class Show_Frame_Controller {
     private Show_Frame window;
@@ -32,13 +34,15 @@ public class Show_Frame_Controller {
     public static Show_Frame_Controller getInstance(){
         return _instance;
     }
-    
+    //lanza la ventana y carga el comboBox y la tabla.
     public void launchWindow(){
         window = new Show_Frame();
         loadGenreComboBox();
         loadTable();
     }
     
+    // Carga la tabla a través de un DefaultTableModel y una lista cargada desde la clase DbManager. 
+    //Cada fila se carga con los datos de un objeto Show.
     public void loadTable(){
         DefaultTableModel model = (DefaultTableModel) window.getShow_table().getModel();
         model.setRowCount(0);
@@ -48,6 +52,7 @@ public class Show_Frame_Controller {
         }
     }
     
+    //Carga el comboBox de géneros con los datos almacenados en las App_Constants
     public void loadGenreComboBox(){
         for(String genre: App_Constants.showGenres){
             window.getGenreComboBox().addItem(genre);

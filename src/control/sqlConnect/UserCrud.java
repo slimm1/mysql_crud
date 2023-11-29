@@ -5,9 +5,9 @@ import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.util.Date;
 import javax.swing.JOptionPane;
-import model.User;
 /**
  * @author Martin Ramonda
+ * Clase intermediaria para operaciones de añadir, eliminar o actualizar usuarios.
  */
 public class UserCrud {
     
