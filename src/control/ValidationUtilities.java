@@ -14,7 +14,6 @@ import model.User;
 public class ValidationUtilities {
     
     // SHOW VALIDATION
-    
     public static boolean validateAddShow(String showname, String hour, Date showDate){
         if(checkEmptyFields(showname, hour, showDate)){
             JOptionPane.showMessageDialog(null, "Some field is empty in the form", "Empty field error", JOptionPane.ERROR_MESSAGE);
@@ -39,7 +38,7 @@ public class ValidationUtilities {
         return true;
     }
     
-        public static boolean validateUpdateShow(Show s, String showname, Date showdate,String hour, String genre){
+    public static boolean validateUpdateShow(Show s, String showname, Date showdate,String hour, String genre){
         if(checkEmptyFields(showname, genre, Show_Frame_Controller.getInstance().getFrame().getShow_Datepicker().getDate())){
             JOptionPane.showMessageDialog(null, "Some field is empty in the form", "Empty field error", JOptionPane.ERROR_MESSAGE);
             return false;
@@ -63,7 +62,7 @@ public class ValidationUtilities {
             return false;
         }
         else if(User_Frame_Controller.getInstance().getUserListModel().getUserList().contains(newUser)){
-            JOptionPane.showMessageDialog(null, "invalid name or email. This user already exists", "name/email error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "invalid name. This user already exists", "name error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         return true;
@@ -92,8 +91,8 @@ public class ValidationUtilities {
             JOptionPane.showMessageDialog(null, "program did not detect any changes to upload", "NO CHANGES MADE", JOptionPane.ERROR_MESSAGE);
             return false;
         }        
-        else if(User_Frame_Controller.getInstance().getUserListModel().getUserList().contains(new User(username,email)) && (User_Frame_Controller.getInstance().getUserListModel().getUserByName(username)!=null && User_Frame_Controller.getInstance().getUserListModel().getUserByEmail(email)!=null)){
-            JOptionPane.showMessageDialog(null, "An user with this email or username already exists on db", "UPLOAD ERROR", JOptionPane.ERROR_MESSAGE);
+        else if(User_Frame_Controller.getInstance().getUserListModel().getUserList().contains(new User(username)) && (!username.equalsIgnoreCase(u.getUsername()))){
+            JOptionPane.showMessageDialog(null, "An user with this username already exists on db", "UPLOAD ERROR", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         return true;

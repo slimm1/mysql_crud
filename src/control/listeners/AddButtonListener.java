@@ -46,7 +46,7 @@ public class AddButtonListener implements ActionListener{
         String email = window.getEmailField().getText();
         String password = window.getPassField().getText();
         Date birthDate = window.getDatePicker().getDate();
-        User newUser = new User(username,email);
+        User newUser = new User(username);
         if(ValidationUtilities.validateAddUser(newUser, username,email, password,birthDate)){
             UserCrud.insertData(User_Frame_Controller.getInstance().getDb().connectDb(), username, password, email, birthDate, window.getShow_combo().getSelectedIndex());
             User_Frame_Controller.getInstance().loadTable();

@@ -23,9 +23,8 @@ public class User {
         this.show_id = show_id;
     }
     
-    public User(String username, String email){
+    public User(String username){
         this.username = username;
-        this.email = email;
     }
 
     public String getUsername() {
@@ -57,7 +56,7 @@ public class User {
         if(obj == null){return false;}
         if(!(obj instanceof User)){return false;}
         User u = (User)obj;
-        if(u.getUsername().equalsIgnoreCase(this.username) || u.getEmail().equalsIgnoreCase(this.email)){return true;}
+        if(u.getUsername().equalsIgnoreCase(this.username)){return true;}
         return false;
     }
     
